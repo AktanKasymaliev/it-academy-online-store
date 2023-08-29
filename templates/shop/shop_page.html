@@ -2,20 +2,36 @@
 {% load static %}
 
 {% block links %}
+<link rel="stylesheet" href="{% static 'css/shop_page.css' %}">
 {% endblock links %}
 
 {% block title %} Shop {% endblock title %}
 
 {% block content %}
-{% for good in object_list %}
-    <p>{{ good.title }}</p>
-    <p>{{ good.description }}</p>
-    <p>{{ good.price }}</p>
-    {% if good.image %}
-    <img class="card-img-top" src="{{ good.image.url }}" alt="Изображение товара" style="height: 300px; width: 305px;">
+<div class="parent">
+    <div class="block" style="margin-top: 30px; border-radius: 20px; height: 100%; padding-bottom: 1px;">
+        <br>
+        <h2 class='title' style="font-family:'Times New Roman', Times, serif;">Интересное</h2>
+        <br>
+    {% if object_list %}
+        {% for product in object_list %}
+            {% autoescape off %}
+                <div class="card mb-5" style="border-radius: 20px; margin-left: 10px; margin-right: 10px; padding-bottom: 30px;">
+                    <div class="card-header">
+                        {{product.created_at}}
+                    </div>
+                    <div class="card-body" >
+                        <p class="card-title" style="font-style: italic; font-size: 20px;">Название: "{{ product.title }}"</p>
+                        <p class="card-text" style="font-size: small;">{{ product.description|truncatewords:20 }}</p>
+                        <a href="#" class="btn btn-primary">Read</a>
+                    </div>
+                </div>
+            {% endautoescape %}
+        {% endfor %}
+    {% else %}
+        <h6 style="text-align: center; font-size: 50px; margin-top: 20px;
+         margin-bottom: 50px; font-family:'Times New Roman', Times, serif;">Пока нет никаких публикаций ;(</h6>
+        <center><img src="https://media.giphy.com/media/MarYoZ2BIJUimKydXa/giphy.gif" alt="sorry" style="margin-bottom: 50px;"></center>
     {% endif %}
-    <p>{{ good.created_at }}</p>
-    <p>{{ good.category }}</p>
-    <p>{{ good.user.username }}</p>
-{% endfor %}
+  </div>
 {% endblock content %}

@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block links %}{% endblock links %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/create_product.css' %}">
+{% endblock links %}
 
 {% block title %}Create Product{% endblock title %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create!</button>
-</form>
+<div class="parent">
+    <div class="block" style="margin-top: 30px; border-radius: 20px;">
+        <br>
+        <h2 class='title'>Create Product</h2>
+        <br>
+        <form method="POST" style="width: 300px; margin-left: 350px;">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <center><button type="submit" id='btn' class="btn btn-primary" style=" margin-top: 20px;">Create</button></center>
+          </form>
+        <br>
+    </div>
+</div>
 {% endblock content %}

@@ -19,5 +19,4 @@ class ShopGoods(models.Model):
     from_at = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=10, choices=GoodsType.choices)
-
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="goods")

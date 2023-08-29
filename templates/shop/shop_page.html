@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+{% endblock links %}
+
+{% block title %} Shop {% endblock title %}
+
+{% block content %}
+{% for good in object_list %}
+    <p>{{ good.title }}</p>
+    <p>{{ good.description }}</p>
+    <p>{{ good.price }}</p>
+    {% if good.image %}
+    <img class="card-img-top" src="{{ good.image.url }}" alt="Изображение товара" style="height: 300px; width: 305px;">
+    {% endif %}
+    <p>{{ good.created_at }}</p>
+    <p>{{ good.category }}</p>
+    <p>{{ good.user.username }}</p>
+{% endfor %}
+{% endblock content %}

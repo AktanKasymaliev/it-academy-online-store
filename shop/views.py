@@ -1,7 +1,8 @@
-from django.views import generic
 from django.shortcuts import redirect
-from .models import ShopGoods
+from django.views import generic
+
 from .forms import GoodsCreateForm
+from .models import ShopGoods
 
 
 class BaseHomePageView(generic.ListView):

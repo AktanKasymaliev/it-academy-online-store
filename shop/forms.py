@@ -8,14 +8,7 @@ class GoodsCreateForm(forms.ModelForm):
 
     class Meta:
         model = ShopGoods
-        fields = (
-            "title",
-            "description",
-            "price",
-            "image",
-            "category",
-            "from_at"
-        )
+        fields = ("title", "description", "price", "image", "category", "from_at")
         widgets = {
             "title": forms.Textarea(
                 attrs={"class": "form-control", "placeholder": "Title"}

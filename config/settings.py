@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Custom applications
     "shop",
+    "clients",
 ]
 
 MIDDLEWARE = [
